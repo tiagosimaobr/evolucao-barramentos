@@ -1,0 +1,317 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local configuration
+config.local.js
+config.local.json
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Test files
+test-results/
+coverage/
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# PyCache (if using Python for local server)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (if using Python)
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Local development
+.local/
+local/
+
+# Performance monitoring
+performance-logs/
+speedtest-results/
+
+# User uploads
+uploads/
+user-content/
+
+# Cache directories
+.cache/
+.sass-cache/
+.parcel-cache/
+
+# Service Worker
+sw.js
+sw.js.map
+
+# Workbox
+workbox-*.js
+workbox-*.js.map
+
+# PWA
+manifest.json
+manifest.webmanifest
+
+# Icons (if generated)
+icon-*.png
+favicon-*.ico
+apple-touch-icon*.png
+
+# Screenshots
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Analytics
+analytics/
+tracking/
+
+# Deployment
+.deploy/
+.netlify/
+.vercel/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large files (avoid committing)
+*.iso
+*.dmg
+*.exe
+*.msi
+
+# Local scripts
+scripts/local-*
+scripts/dev-*
+
+# Experimental features
+experimental/
+beta/
+alpha/
+
+# Generated documentation
+api-docs/
+typedoc/
+
+# Storybook build outputs
+storybook-static/
+
+# Bundle analyzer
+bundle-analyzer-report.html
+
+# Lighthouse reports
+lighthouse-reports/
+
+# Accessibility reports
+accessibility-report.html
+axe-reports/
+
+# Security scans
+security-scan.json
+snyk-report.json
+
+# Performance budgets
+performance-budget.json
+
+# Custom configuration
+config.local.json
+settings.local.json
+
+# Development tools
+dev-tools/
+debug-tools/
+
+# Temporary exports
+exports/
+downloads/
+
+# Local testing
+test-results/
+e2e-results/
+
+# Monitoring
+monitoring/
+metrics/
+
+# Backup and archives
+backups/
+archives/
+
+# Local documentation
+docs-local/
+notes/
+
+# Personal files
+personal/
+private/
+
+# Experimental branches
+feature-*/
+hotfix-*/
+
+# Merge conflicts
+*.orig
+*.rej
+
+# Patch files
+*.patch
+*.diff

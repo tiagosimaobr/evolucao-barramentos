@@ -1,0 +1,25 @@
+{
+  "name": "evolucao-barramentos",
+  "version": "1.0.0",
+  "description": "Página interativa sobre a evolução dos barramentos de disco",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Build completed - static files ready'",
+    "start": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "barramentos",
+    "storage",
+    "sata",
+    "sas",
+    "nvme",
+    "pcie",
+    "fibre-channel",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Assistant",
+  "license": "MIT"
+}
