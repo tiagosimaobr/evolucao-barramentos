@@ -1,27 +1,29 @@
-# 1. Nome do Workflow (aparece na aba Actions do GitHub)
+# 1. Nome do Workflow
 name: Deploy to Azure
 
-# 2. Gatilho: quando este workflow será executado?
+# 2. Gatilho do Workflow
 on:
   push:
     branches:
-      - main # Executa quando há um push para a branch 'main'
-  workflow_dispatch: # Permite que você execute manualmente pela interface do GitHub
+      - main
+  workflow_dispatch:
 
-# 3. Definição dos Trabalhos (Jobs)
+# 3. <<<--- ADICIONE ESTE BLOCO DE PERMISSÕES ---<<<
+permissions:
+  id-token: write # Necessário para o login OIDC
+  contents: read  # Necessário para o checkout do código
+
+# 4. Definição dos Trabalhos (Jobs)
 jobs:
-  # 4. Nome do nosso trabalho (pode ser qualquer nome, ex: build-and-deploy)
   build-and-deploy:
-    # 5. Onde este trabalho será executado?
     runs-on: ubuntu-latest
 
-    # 6. Os passos (steps) que este trabalho irá executar, em ordem
     steps:
-      # Passo 1: Fazer o checkout do código do seu repositório
+      # Passo 1: Checkout do código
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Passo 2: Fazer login no Azure usando OIDC
+      # Passo 2: Login no Azure
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -30,11 +32,10 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           auth-type: SERVICE_PRINCIPAL
 
-      # Passo 3: (Opcional) Verificar se o login foi bem-sucedido
+      # Passo 3: (Opcional) Verificar login
       - name: 'Run Azure CLI commands'
         run: |
           az account show --output table
           az group list --output table
 
       # ... Adicione aqui os próximos passos do seu deploy ...
-      # Por exemplo: az deployment group create ...
