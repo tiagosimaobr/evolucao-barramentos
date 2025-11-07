@@ -313,14 +313,14 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 ## 📞 Suporte
 
 ### Documentação
-- [Wiki do Projeto](https://github.com/seu-usuario/evolucao-barramentos/wiki)
-- [API Reference](https://github.com/seu-usuario/evolucao-barramentos/blob/main/API.md)
-- [Guia de Contribuição](https://github.com/seu-usuario/evolucao-barramentos/blob/main/CONTRIBUTING.md)
+- [Wiki do Projeto](https://github.com/tiagosimaobr/evolucao-barramentos/wiki)
+- [API Reference](https://github.com/tiagosimaobr/evolucao-barramentos/blob/main/API.md)
+- [Guia de Contribuição](https://github.com/tiagosimaobr/evolucao-barramentos/blob/main/CONTRIBUTING.md)
 
 ### Contato
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/evolucao-barramentos/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/seu-usuario/evolucao-barramentos/discussions)
-- **Email**: contato@seu-dominio.com
+- **Issues**: [GitHub Issues](https://github.com/tiagosimaobr/evolucao-barramentos/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/tiagosimaobr/evolucao-barramentos/discussions)
+- **Email**: tsenasimao@gmail.com
 
 ---
 
