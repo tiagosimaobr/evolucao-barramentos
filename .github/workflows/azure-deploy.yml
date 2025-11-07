@@ -3,11 +3,6 @@ name: Deploy to Azure App Service
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
-
-env:
-  AZURE_WEBAPP_NAME: evolucao-barramentos
-  AZURE_WEBAPP_PACKAGE_PATH: .
 
 jobs:
   build-and-deploy:
@@ -17,114 +12,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Validate HTML structure
-      run: |
-        echo "🔍 Validating project structure..."
-        ls -la
-        test -f index.html || (echo "❌ index.html not found" && exit 1)
-        test -d css || (echo "❌ css directory not found" && exit 1)
-        test -d js || (echo "❌ js directory not found" && exit 1)
-        echo "✅ Project structure validated"
-        
-    - name: Validate critical files
-      run: |
-        echo "🔍 Validating critical files..."
-        test -f css/styles.css || (echo "❌ styles.css not found" && exit 1)
-        test -f js/main.js || (echo "❌ main.js not found" && exit 1)
-        test -f js/technologies.js || (echo "❌ technologies.js not found" && exit 1)
-        test -f js/timeline.js || (echo "❌ timeline.js not found" && exit 1)
-        test -f js/charts.js || (echo "❌ charts.js not found" && exit 1)
-        test -f js/simulations.js || (echo "❌ simulations.js not found" && exit 1)
-        echo "✅ All critical files validated"
-        
-    - name: Check HTML content
-      run: |
-        echo "🔍 Validating HTML content..."
-        if grep -q "Evolução dos Barramentos" index.html; then
-          echo "✅ HTML title validated"
-        else
-          echo "❌ HTML title not found"
-          exit 1
-        fi
-        
-    - name: Optimize assets for production
-      run: |
-        echo "⚡ Optimizing assets for production..."
-        # Create production-ready version
-        cp index.html index.prod.html
-        
-        # Add cache headers meta tag
-        sed -i 's/<head>/<head>\n  <meta http-equiv="Cache-Control" content="public, max-age=31536000">/' index.prod.html
-        
-        # Minify inline comments (simple optimization)
-        sed -i 's/<!--.*-->//g' index.prod.html
-        
-        echo "✅ Assets optimized for production"
-        
-    - name: Create deployment package
-      run: |
-        echo "📦 Creating deployment package..."
-        # Include only necessary files
-        zip -r deploy.zip \
-          index.prod.html \
-          css/ \
-          js/ \
-          -x "*.git*" \
-          "*.gitignore" \
-          "README.md" \
-          "package*.json" \
-          ".github/*" \
-          "node_modules/*"
-          
-        # Verify package
-        unzip -l deploy.zip
-        echo "✅ Deployment package created successfully"
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        clientId: ${{ secrets.AZURE_CLIENT_ID }}
+        tenantId: ${{ secrets.AZURE_TENANT_ID }}
+        clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
         
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v3
       with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/deploy.zip
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        
-    - name: Verify deployment
-      run: |
-        echo "🎉 Deployment completed successfully!"
-        echo "🌐 Your app is available at: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
-        echo "🌐 Direct URL: https://evolucao-barramentos-bhh7asedbefudvh4.brazilsouth-01.azurewebsites.net"
-        echo "📊 Check deployment logs in Azure Portal for detailed status"
-        
-    - name: Cleanup
-      if: always()
-      run: |
-        echo "🧹 Cleaning up temporary files..."
-        rm -f deploy.zip
-        rm -f index.prod.html
-        echo "✅ Cleanup completed"
-
-  # Additional job for health check
-  health-check:
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
-    if: success()
-    steps:
-    - name: Wait for deployment
-      run: |
-        echo "⏳ Waiting 30 seconds for deployment to propagate..."
-        sleep 30
-        
-    - name: Health check
-      run: |
-        echo "🏥 Performing health check..."
-        APP_URL="https://evolucao-barramentos-bhh7asedbefudvh4.brazilsouth-01.azurewebsites.net"
-        
-        # Check if site is accessible
-        if curl -f -s -o /dev/null -w "%{http_code}" "$APP_URL" | grep -q "200"; then
-          echo "✅ Site is accessible (HTTP 200)"
-        else
-          echo "⚠️ Site may not be fully accessible yet"
-          echo "This is normal for new deployments - please check manually"
-        fi
-        
-        echo "🔗 Site URL: $APP_URL"
-        echo "📝 Note: HTTPS may take a few minutes to propagate"
+        app-name: evolucao-barramentos
+        package: .
